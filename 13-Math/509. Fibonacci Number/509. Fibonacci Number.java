@@ -1,11 +1,30 @@
-1class Solution {
-2    public int fib(int n) {
-3        if(n==1){
-4            return 1;
-5        }
-6        if(n==0){
-7            return 0;
-8        }
-9        return fib(n-1)+fib(n-2);
-10    }
-11}
+class Solution {
+    public static int[] dp = new int[31];
+    static {
+        Arrays.fill(dp, -1); 
+    }
+
+    public  int fib(int n) {
+        if (n <= 1) {
+            return n;
+        }
+
+        // Temporary variables to store values of fib(n-1) & fib(n-2)
+        int first, second;
+
+        if (dp[n - 1] != -1) {
+            first = dp[n - 1];
+        } else {
+            first = fib(n - 1);
+        }
+
+        if (dp[n - 2] != -1) {
+            second = dp[n - 2];
+        } else {
+            second = fib(n - 2);
+        }
+
+        // Memoization
+        return dp[n] = first + second;
+    }
+}
