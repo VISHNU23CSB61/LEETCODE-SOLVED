@@ -10,8 +10,6 @@
 10            n/=10;
 11        }
 12        int tot=sum+prod;
-13        if(tot==temp){
-14            return true;
-15        }return false;
-16    }
-17}
+13        return temp % tot == 0;
+14    }
+15}
